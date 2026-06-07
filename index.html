@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LNMU Study Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-left">
+            <div class="logo">LNMU</div>
+            <div class="nav-titles">
+                <h1 class="site-name">LNMU Portal</h1>
+                <p id="current-page-title" class="page-name">Home</p>
+            </div>
+        </div>
+        <button id="hamburger-btn" class="hamburger" aria-label="Menu">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+    </header>
+
+    <div id="dropdown-menu" class="dropdown-menu hidden">
+        <button class="menu-item" onclick="navigate('home', 'Home')">Home</button>
+        <button class="menu-item" onclick="navigate('course-selection', 'PYQ', 'PYQ')">PYQ</button>
+        <button class="menu-item" onclick="navigate('course-selection', 'Notes', 'Notes')">Notes</button>
+        <button class="menu-item" onclick="navigate('course-selection', 'Syllabus', 'Syllabus')">Syllabus</button>
+        <a href="#contact-footer" class="menu-item" onclick="closeMenu()">Contact</a>
+    </div>
+
+    <main id="main-content">
+        
+        <section id="page-home" class="page-section active">
+            <div class="welcome-box">
+                <h2>Welcome Students!</h2>
+                <p>Select an option below to easily download your study material.</p>
+            </div>
+            
+            <div class="button-grid">
+                <button class="primary-btn btn-large" onclick="navigate('course-selection', 'PYQ', 'PYQ')">Previous Year Questions (PYQ)</button>
+                <button class="primary-btn btn-large" onclick="navigate('course-selection', 'Notes', 'Notes')">Study Notes</button>
+                <button class="primary-btn btn-large" onclick="navigate('course-selection', 'Syllabus', 'Syllabus')">Course Syllabus</button>
+                <a href="#contact-footer" class="primary-btn btn-large btn-outline">Contact Us</a>
+            </div>
+        </section>
+
+        <section id="page-course-selection" class="page-section hidden">
+            <div class="search-container">
+                <input type="text" id="course-search" class="search-bar" placeholder="Search course (e.g. B.A)..." onkeyup="filterList('course-list', 'course-search')">
+            </div>
+            <div id="course-list" class="list-container">
+                </div>
+        </section>
+
+        <section id="page-subject-selection" class="page-section hidden">
+            <div class="search-container">
+                <input type="text" id="subject-search" class="search-bar" placeholder="Search subject (e.g. History)..." onkeyup="filterList('subject-list', 'subject-search')">
+            </div>
+            <div id="subject-list" class="list-container">
+                </div>
+        </section>
+
+        <section id="page-content" class="page-section hidden">
+            <div class="search-container">
+                <input type="text" id="pdf-search" class="search-bar" placeholder="Search files..." onkeyup="filterList('pdf-list', 'pdf-search')">
+            </div>
+            
+            <div class="tabs-container">
+                <button class="tab-btn active" onclick="switchTab('Major')">Major</button>
+                <button class="tab-btn" onclick="switchTab('Minor')">Minor</button>
+                <button class="tab-btn" onclick="switchTab('MDC')">MDC</button>
+                <button class="tab-btn" onclick="switchTab('VAC')">VAC</button>
+            </div>
+
+            <div id="pdf-list" class="pdf-container">
+                </div>
+        </section>
+
+        <section id="page-pdf-viewer" class="page-section hidden">
+            <div class="viewer-header">
+                <button class="back-btn" onclick="goBackToContent()">← Back</button>
+                <a id="viewer-download-btn" href="#" download class="primary-btn btn-small">Download PDF</a>
+            </div>
+            <div class="pdf-frame-container">
+                <div class="dummy-pdf">
+                    <h3>PDF Viewer Simulation</h3>
+                    <p id="viewer-title">Document Name</p>
+                    <p class="note">In a live environment, an iframe or PDF.js would render the file here.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact-footer" class="site-footer">
+        <div class="footer-content">
+            <h3>Contact Support</h3>
+            <div class="contact-card">
+                <p><strong>Email:</strong> support@lnmuportal.com</p>
+                <p><strong>Mobile:</strong> +91 98765 43210</p>
+            </div>
+            <div class="quick-links">
+                <button class="link-btn" onclick="navigate('home', 'Home')">Go to Home</button>
+            </div>
+            <p class="copyright">© 2026 LNMU Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
